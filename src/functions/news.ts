@@ -1,7 +1,14 @@
-const { Service } = require("../routes/news/news.service");
+import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
-const service = new Service();
+import { Service } from "../routes/news/news.service";
 
-exports.handler = async () => {
-  return { data: await service.get(5, 0) };
+const handler: Handler = async () => {
+  const data = await new Service().get(5, 0);
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(data)
+  };
 };
+
+export { handler };
