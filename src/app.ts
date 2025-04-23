@@ -28,7 +28,7 @@ class App {
     const port = env.get("PORT", true);
 
     this.app.listen(port, () => {
-      console.log("Запуск сервера: http://localhost:"+port);
+      console.log("Server starting: http://localhost:"+port);
     });
   }
 

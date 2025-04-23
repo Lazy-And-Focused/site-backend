@@ -22,7 +22,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "express-session": "^1.18.1"
+    "express-session": "^1.18.1",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

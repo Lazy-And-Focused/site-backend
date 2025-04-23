@@ -1,4 +1,9 @@
+import { start } from "telegram";
+
 import express from "express";
 import App from "./app";
 
-new App(express()).listen();
+(async () => {
+  new App(express()).listen();
+  start();
+})();
