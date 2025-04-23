@@ -20,10 +20,12 @@ const client = new Client({
   listeners: listeners.datas
 });
 
-const start = async () => {
+const start = () => {
   client.launchListeners();
   client.writeCommands();
   client.execute();
+
+  return client
 };
 
 export {
