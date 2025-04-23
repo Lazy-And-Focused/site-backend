@@ -1,4 +1,4 @@
-const Service = require("../routes/news/news.service");
+const { Service } = require("../routes/news/news.service");
 
 const service = new Service();
 
