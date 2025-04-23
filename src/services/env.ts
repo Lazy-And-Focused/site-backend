@@ -19,6 +19,7 @@ const KEYS = [
   "COOKIE_AGE",
   "RESAVE",
   "SAVE_UNINITIALISED",
+  "IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS"
 ] as const;
 
 type Keys = (typeof KEYS)[number];
@@ -28,7 +29,8 @@ const DEFAULT: Record<Unrequired, string> = {
   PORT: "9001",
   COOKIE_AGE: "604800000",
   RESAVE: "false",
-  SAVE_UNINITIALISED: "false"
+  SAVE_UNINITIALISED: "false",
+  IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS: "false"
 };
 
 class Env {
