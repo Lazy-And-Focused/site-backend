@@ -17,7 +17,7 @@ class Api {
       headers: {
         "Content-Type": "application/json"
       }
-    })).json()).result as Update[]).filter((m: any) => `${m?.channel_post?.chat?.id}` === chatId).sort((m1: any, m2: any) => m1.date - m2.date);
+    })).json()).result as Update[]).filter((m: any) => `${m?.channel_post?.chat?.id}` === chatId).sort((m1: any, m2: any) => m1.date - m2.date).toReversed();
 
     return data.splice(offset, limit);
   }
