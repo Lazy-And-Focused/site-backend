@@ -11,6 +11,7 @@
     "skipLibCheck": true,
     "paths": {
       "env": ["./src/services/env.ts"],
+      "services/*": ["./src/services/*"],
       "routes": ["./src/routes"],
       "telegram": ["./src/telegram"],
       "api": ["./src/api"]
