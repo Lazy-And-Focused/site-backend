@@ -4,10 +4,6 @@ config();
 
 const REQUIRED = [
   "TELEGRAM_BOT_TOKEN",
-  
-  "CLIENT_URL",
-  
-  "SESSION_SECRET",
   "TELEGRAM_NEWS_CHANNEL_ID"
 ] as const;
 
@@ -16,10 +12,6 @@ type Required = (typeof REQUIRED)[number];
 const KEYS = [
   ...REQUIRED,
 
-  "PORT",
-  "COOKIE_AGE",
-  "RESAVE",
-  "SAVE_UNINITIALISED",
   "IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS"
 ] as const;
 
@@ -27,10 +19,6 @@ type Keys = (typeof KEYS)[number];
 
 type Unrequired = Exclude<Keys, Required>;
 const DEFAULT: Record<Unrequired, string> = {
-  PORT: "9001",
-  COOKIE_AGE: "604800000",
-  RESAVE: "false",
-  SAVE_UNINITIALISED: "false",
   IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS: "false"
 };
 
