@@ -15,4 +15,6 @@ class QueryService<T extends any[] | Readonly<any[]>> {
   }
 }
 
+export { QueryService }
+
 export default QueryService;

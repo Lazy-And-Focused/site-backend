@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2023",
+    "target": "ES2022",
     "module": "commonjs",
     "rootDir": "./",
     "outDir": "./dist",
@@ -13,6 +13,7 @@
     "paths": {
       "env": ["./src/services/env.ts"],
       "services/*": ["./src/services/*"],
+      "routes/*": ["./src/routes/*"],
       "routes": ["./src/routes"],
       "telegram": ["./src/telegram"],
       "api": ["./src/api"]

@@ -1,9 +1,11 @@
+import { env } from "../utils/env";
+
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
-import { Service } from "../routes/news/news.service";
+import Api from "services/telegram.api";
 
 const handler: Handler = async () => {
-  const data = await new Service().get(5, 0);
+  const data = await new Api().getMessages(env.get("TELEGRAM_NEWS_CHANNEL_ID"), 0, 10);
 
   return {
     statusCode: 200,
