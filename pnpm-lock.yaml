@@ -20,9 +20,6 @@ importers:
       express-session:
         specifier: ^1.18.1
         version: 1.18.1
-      fenviee:
-        specifier: 0.0.1-alpha.1
-        version: 0.0.1-alpha.1
       telegraf:
         specifier: ^4.16.3
         version: 4.16.3
@@ -1122,10 +1119,6 @@ packages:
 
   fecha@4.2.3:
     resolution: {integrity: sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw==}
-
-  fenviee@0.0.1-alpha.1:
-    resolution: {integrity: sha512-xsV2/zCJVhnd8Cm5r4Ghn6xQJ6ys324CgUINLexYuYrQub9CLG3Ev8huyBl1YkQWTO/Fd7J+UcdS6giczCUmNg==}
-    engines: {node: '>=7.6.0'}
 
   fetch-blob@3.2.0:
     resolution: {integrity: sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==}
@@ -3541,8 +3534,6 @@ snapshots:
       pend: 1.2.0
 
   fecha@4.2.3: {}
-
-  fenviee@0.0.1-alpha.1: {}
 
   fetch-blob@3.2.0:
     dependencies:
