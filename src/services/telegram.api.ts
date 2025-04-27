@@ -1,8 +1,6 @@
-import Env from "env";
+import { env } from "../utils/env";
 
 import { Update } from "telegraf/typings/core/types/typegram";
-
-const env = new Env();
 
 class Api {
   private readonly api_url = "https://api.telegram.org/bot" + env.get("TELEGRAM_BOT_TOKEN");

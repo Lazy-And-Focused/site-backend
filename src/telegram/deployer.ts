@@ -1,11 +1,11 @@
-import Env from "env";
+import { env } from "../utils/env";
 
 import { readdirSync, existsSync } from "fs";
 import { join, resolve } from "path";
 import { Commands } from "./types/command.type";
 import { Listeners } from "./types/listener.type";
 
-const ignoreErrors = Boolean(new Env().get("IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS", true));
+const ignoreErrors = Boolean(env.get("IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS", true));
 
 const datas: {
   commands: Commands,

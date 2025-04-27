@@ -1,10 +1,10 @@
-import Env from "env";
+import { env } from "../utils/env";
 
 import { Telegraf } from "telegraf";
 import { ICommand } from "./types/command.type";
 import { IListener } from "./types/listener.type";
 
-const token = new Env().get("TELEGRAM_BOT_TOKEN");
+const token = env.get("TELEGRAM_BOT_TOKEN");
 
 class Client {
   public readonly bot: Telegraf;
