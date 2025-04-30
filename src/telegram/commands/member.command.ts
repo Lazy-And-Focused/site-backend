@@ -87,7 +87,7 @@ class Command implements ICommand {
 
       if (action === "addmulti") {
         return interaction.reply(
-          "Действие выполнено." + JSON.parse(
+          "Действие выполнено." + JSON.stringify(
             JSON.parse(interaction.text.split("\n").splice(1).join(""))
               .map(async (m: any) => {
                 const member: IMember = { ...DEFAULT, ...m };
