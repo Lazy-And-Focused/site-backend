@@ -13,7 +13,7 @@ class Controller {
   public async get(req: Request, res: Response) {
     const query = getQuery.parse(req.query, { length: "5", offset: "0 "});
 
-    const messages = await service.get(Number(query.length), Number(query.offset));
+    const messages = service.get();
     
     res.send({data: messages});
   }
