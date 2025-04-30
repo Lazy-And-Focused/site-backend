@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import databaseouter, { ROUTER as database } from "./database";
+import databaseRouter, { ROUTER as database } from "./database";
 
 const router = Router();
 
-router.use(database, databaseouter);
+router.use(database, databaseRouter);
 
 export default router;
