@@ -1,6 +1,6 @@
 import Client from "./bot";
 
-import Deployer from "./deployer";
+import Deployer, { datas } from "./deployer";
 
 import { ICommand } from "./types/command.type";
 import { IListener } from "./types/listener.type";
@@ -17,7 +17,8 @@ const listeners = new Deployer<IListener>({
 
 const client = new Client({
   commands: Object.fromEntries(commands.datas.entries()),
-  listeners: Object.fromEntries(listeners.datas.entries())
+  listeners: Object.fromEntries(listeners.datas.entries()),
+  help: Object.fromEntries(datas.help.entries())
 });
 
 let started = false;

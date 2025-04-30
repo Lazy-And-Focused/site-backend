@@ -2,17 +2,14 @@ import Env from "env";
 
 import { readdirSync, existsSync } from "fs";
 import { join, resolve } from "path";
-import { Commands } from "./types/command.type";
-import { Listeners } from "./types/listener.type";
+import { IDeployData } from "./types/deploy-data.type";
 
 const ignoreErrors = Boolean(new Env().get("IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS", true));
 
-const datas: {
-  commands: Commands,
-  listeners: Listeners
-} = {
+const datas: IDeployData = {
   commands: new Map(),
-  listeners: new Map()
+  listeners: new Map(),
+  help: new Map()
 };
 
 class Deployer<
@@ -89,11 +86,16 @@ class Deployer<
   private readonly Deploy = (paths: string[] = this.datasPaths) => {
     for (const path of paths) {
       const data = <T>(new (require(this.resolve(path)).default)(...this.constructorData));
+      const sendHelp = require(this.resolve(path))?.sendHelp;
 
       if (!("name" in data && "execute" in data)) {
         this.errorStack.datas.push(new Error("name or execute in file at " + path + " are not exists"));
         continue;
       }
+
+      if (sendHelp) {
+        datas.help.set(data.name, sendHelp);
+      };
 
       datas[this.type].set(data.name, data as any);
       this.datas.set(data.name, data);

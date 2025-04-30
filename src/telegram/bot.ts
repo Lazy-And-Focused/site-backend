@@ -1,8 +1,7 @@
 import Env from "env";
 
 import { Telegraf } from "telegraf";
-import { ICommand } from "./types/command.type";
-import { IListener } from "./types/listener.type";
+import { IDeployJson } from "./types/deploy-data.type";
 
 const token = new Env().get("TELEGRAM_BOT_TOKEN");
 
@@ -12,10 +11,7 @@ class Client {
   private initialized = false;
   private listenersInitialized = false;
 
-  public constructor(public readonly data: {
-    commands: { [key: string]: ICommand },
-    listeners: { [key: string]: IListener }
-  }) {
+  public constructor(public readonly data: IDeployJson) {
     this.bot = new Telegraf(token);
   };
 

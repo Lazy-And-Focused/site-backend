@@ -18,7 +18,10 @@ const schema = new Schema<IMember>({
   },
 
   links: [{
-    type: mongoose.SchemaTypes.String,
+    type: {
+      name: mongoose.SchemaTypes.String,
+      url: mongoose.SchemaTypes.String,
+    }
   }]
 });
 
