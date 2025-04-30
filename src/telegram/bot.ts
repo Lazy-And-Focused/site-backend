@@ -13,14 +13,14 @@ class Client {
   private listenersInitialized = false;
 
   public constructor(public readonly data: {
-    commands: Map<string, ICommand>,
-    listeners: Map<string, IListener>
+    commands: { [key: string]: ICommand },
+    listeners: { [key: string]: IListener }
   }) {
     this.bot = new Telegraf(token);
   };
 
   public writeCommands() {
-    this.data.commands.forEach((command) => {
+    Object.values(this.data.commands).forEach(command => {
       console.log(`Loaded command: ${command.name}`);
     });
   }
@@ -29,7 +29,7 @@ class Client {
     if (this.listenersInitialized) throw new Error("The listeners has initialized early.");
     this.listenersInitialized = true;
 
-    this.data.listeners.forEach((listener) => {
+    Object.values(this.data.listeners).forEach((listener) => {
       console.log(`Loading "${listener.name}" listener on: ${listener.on}`);
       this.bot.on(listener.on, listener.execute);
     });

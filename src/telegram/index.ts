@@ -16,16 +16,22 @@ const listeners = new Deployer<IListener>({
 }).execute();
 
 const client = new Client({
-  commands: commands.datas,
-  listeners: listeners.datas
+  commands: Object.fromEntries(commands.datas.entries()),
+  listeners: Object.fromEntries(listeners.datas.entries())
 });
 
+let started = false;
+
 const start = () => {
+  if (started) return client;
+
   client.launchListeners();
   client.writeCommands();
   client.execute();
 
-  return client
+  started = true;
+
+  return client;
 };
 
 export {

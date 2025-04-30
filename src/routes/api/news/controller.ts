@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
-import Service from "./database.service";
+import Service from "./service";
 
 const service = new Service()
 
 class Controller {
-  public constructor() {};
+  public constructor() {}
 
   public async get(_req: Request, res: Response) {
-    const status = service.get();
-
-    res.send({data: { status }});
+    const messages = service.get();
+    
+    res.send({data: messages});
   }
-};
+}
 
 export { Controller };
 

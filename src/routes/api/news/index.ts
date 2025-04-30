@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { ROUTES, ROUTER } from "./news.routes";
+import { ROUTES, ROUTER } from "./routes";
 
-import Controller from "./news.controller";
+import Controller from "./controller";
 
 const controller = new Controller();
 const router = Router();
