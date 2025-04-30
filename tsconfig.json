@@ -12,6 +12,7 @@
     "paths": {
       "env": ["./src/services/env.ts"],
       "services/*": ["./src/services/*"],
+      "database/*": ["./src/database/*"],
       "routes": ["./src/routes"],
       "telegram": ["./src/telegram"],
       "api": ["./src/api"]

@@ -1,9 +1,13 @@
 import { Router } from "express";
 
-import newsRouter, { ROUTER as news } from "./news";
+import status from "./status";
+import api from "./api";
 
 const router = Router();
 
-router.use("/" + news, newsRouter);
+router.use("/status", status);
+router.use("/api", api);
+
+export { router };
 
 export default router;

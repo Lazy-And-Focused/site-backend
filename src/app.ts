@@ -1,4 +1,5 @@
 import Env from "env";
+
 import router from "routes";
 
 import express, { Express } from "express";
@@ -40,7 +41,7 @@ class App {
 
     new Session(this.app);
 
-    this.app.use(router)
+    this.app.use("/", router);
   };
 }
 

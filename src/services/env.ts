@@ -8,6 +8,7 @@ const REQUIRED = [
   "CLIENT_URL",
   
   "SESSION_SECRET",
+  "MONGO_URL"
 ] as const;
 
 type Required = (typeof REQUIRED)[number];

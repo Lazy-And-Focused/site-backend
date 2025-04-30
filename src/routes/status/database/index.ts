@@ -1,9 +1,7 @@
 import { Router } from "express";
 
-import { ROUTES, ROUTER } from "./news.routes";
-
-import Service from "./news.service";
-import Controller from "./news.controller";
+import { ROUTES, ROUTER } from "./database.routes";
+import Controller from "./database.controller";
 
 const controller = new Controller();
 const router = Router();
