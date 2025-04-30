@@ -9,7 +9,7 @@ import { start } from "./telegram/index";
 const env = new Env();
 const app = new App(express())
 
-// start()
+start()
 connect(env.get("MONGO_URL"));
 app.listen();
 
