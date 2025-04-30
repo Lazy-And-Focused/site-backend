@@ -8,7 +8,6 @@ const REQUIRED = [
   "CLIENT_URL",
   
   "SESSION_SECRET",
-  "TELEGRAM_NEWS_CHANNEL_ID"
 ] as const;
 
 type Required = (typeof REQUIRED)[number];
