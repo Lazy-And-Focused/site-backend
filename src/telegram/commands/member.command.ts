@@ -2,7 +2,7 @@ import Env from "env";
 
 import { ICommand } from "../types/command.type";
 import { IInteraction } from "../types/interaction.types";
-import { KEYS, IMember } from "types/member.type";
+import { KEYS, IMember, DEFAULT } from "types/member.type";
 
 import { Members } from "models/members.model";
 import Parser from "database/parse";
@@ -21,7 +21,7 @@ const helpJson = JSON.stringify(<IMember>{
   tag: "???"
 }, undefined, 2);
 
-const actions = ["add", "update", "delete"];
+const actions = ["add", "update", "delete", "addmulti"];
 
 const help =
   "Учтите, Вы должны передавать участник в типе JSON на следующей строке.\n"
@@ -85,11 +85,26 @@ class Command implements ICommand {
         ));
       };
 
+      if (action === "addmulti") {
+        return interaction.reply(
+          "Действие выполнено." + JSON.parse(
+            JSON.parse(interaction.text.split("\n").splice(1).join(""))
+              .map(async (m: any) => {
+                const member: IMember = { ...DEFAULT, ...m };
+
+                KEYS.forEach(k => {
+                  if (!(k in member)) throw new Error(`Ключ ${k} не найден в ${member.name || "JSON"}`);
+                });
+
+                return await Members.create(member);
+              }
+            )
+         )
+        );
+      };
+
       const json = {
-        socials: [],
-        description: "",
-        avatar: "",
-        meta: "",
+        ...DEFAULT,
         ...JSON.parse(interaction.text.split("\n").splice(1).join(""))
       } as IMember;
 
