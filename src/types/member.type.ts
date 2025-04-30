@@ -12,11 +12,22 @@ export type IMember = {
   meta?: string[];
 };
 
-export const KEYS = [
+export const DEFAULT = {
+  socials: [],
+  description: "",
+  avatar: "",
+  meta: "",
+} as const;
+
+export const REQUIRED = [
   "name",
   "role",
   "tag",
+] as const;
 
+export const KEYS = [
+  ...REQUIRED,
+  
   "description",
   "socials",
 

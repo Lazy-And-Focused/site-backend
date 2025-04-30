@@ -10,8 +10,8 @@ class Service {
     return (await Members.find()).map(m => parser.execute(m));
   }
 
-  public getOne(username: string) {
-    return Members.findOne({username: username});
+  public getOne(name: string) {
+    return Members.findOne({name: name});
   }
 }
 

@@ -9,7 +9,8 @@ const REQUIRED = [
   
   "SESSION_SECRET",
   "TELEGRAM_BOT_ADMINS_ID",
-  "MONGO_URL"
+  "MONGO_URL",
+  "AUTH_TOKEN"
 ] as const;
 
 type Required = (typeof REQUIRED)[number];
