@@ -1,16 +1,25 @@
-import { ILInk } from "./link.type";
+import { ILink } from "./link.type";
+
+export type IMember = {
+  name: string;
+  role: string;
+  tag: string;
+
+  description: string;
+  socials: ILink[];
+  
+  avatar?: string;
+  meta?: string[];
+};
 
 export const KEYS = [
-  "username",
-  "post",
-  "description",
-  "links",
-] as const;
+  "name",
+  "role",
+  "tag",
 
-export interface IMember {
-  username: string;
-  post: string;
-  description: string;
-  
-  links: ILInk[];
-};
+  "description",
+  "socials",
+
+  "avatar",
+  "meta"
+] as const;

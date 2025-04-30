@@ -6,19 +6,20 @@ import { KEYS, IMember } from "types/member.type";
 
 import { Members } from "models/members.model";
 import Parser from "database/parse";
-import { ILInk } from "types/link.type";
+import { ILink } from "types/link.type";
 
 const env = new Env();
 
-const helpJson = JSON.stringify({
-  username: "FOCKUSTY",
-  post: "CEO",
+const helpJson = JSON.stringify(<IMember>{
+  name: "FOCKUSTY",
+  role: "CEO",
   description: "Идеальный Друг И Отличный Товарищ.",
-  links: [<ILInk>{
+  socials: [<ILink>{
     name: "GitHub",
-    url: "github.com/fockusty"
-  }]
-}, undefined, 2)
+    href: "https://github.com/fockusty"
+  }],
+  tag: "???"
+}, undefined, 2);
 
 const help =
   "Учтите, Вы должны передавать участник в типе JSON на следующей строке.\n"
@@ -53,7 +54,11 @@ class Command implements ICommand {
     }
 
     try {
-      const json = JSON.parse(interaction.text.split("\n").splice(1).join("")) as IMember;
+      const json = {
+        socials: [],
+        description: "",
+        ...JSON.parse(interaction.text.split("\n").splice(1).join(""))
+      } as IMember;
 
       KEYS.forEach(k => {
         if (!(k in json)) throw new Error(`Ключ ${k} не найден в JSON`);

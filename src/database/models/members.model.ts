@@ -1,28 +1,44 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, trusted } from "mongoose";
 import { IMember } from "types/member.type";
 
 const schema = new Schema<IMember>({
-  username: {
+  name: {
     type: mongoose.SchemaTypes.String,
     required: true,
     unique: true
   },
 
-  post: {
+  role: {
     type: mongoose.SchemaTypes.String,
     required: true
   },
 
   description: {
-    type: mongoose.SchemaTypes.String
+    type: mongoose.SchemaTypes.String,
+    required: true
   },
 
-  links: [{
+  tag: {
+    type: mongoose.SchemaTypes.String,
+    required: true
+  },
+
+  socials: [{
     type: {
       name: mongoose.SchemaTypes.String,
-      url: mongoose.SchemaTypes.String,
+      href: mongoose.SchemaTypes.String,
     }
-  }]
+  }],
+
+  avatar: {
+    type: mongoose.SchemaTypes.String,
+    required: false
+  },
+
+  meta: {
+    type: mongoose.SchemaTypes.String,
+    required: false
+  }
 });
 
 const model = mongoose.model("members", schema);

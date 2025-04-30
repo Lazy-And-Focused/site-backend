@@ -1,4 +1,4 @@
-export interface ILInk {
+export interface ILink {
   name: string;
-  url: string;
+  href: string;
 }
