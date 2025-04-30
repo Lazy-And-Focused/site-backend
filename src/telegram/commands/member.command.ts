@@ -93,9 +93,11 @@ class Command implements ICommand {
         ...JSON.parse(interaction.text.split("\n").splice(1).join(""))
       } as IMember;
 
-      KEYS.forEach(k => {
-        if (!(k in json)) throw new Error(`Ключ ${k} не найден в JSON`);
-      });
+      if (action === "add") {
+        KEYS.forEach(k => {
+          if (!(k in json)) throw new Error(`Ключ ${k} не найден в JSON`);
+        });
+      };
 
       return interaction.reply("Действие выполнено.\n" + JSON.stringify((
         action === "add"
