@@ -8,6 +8,7 @@ const REQUIRED = [
   "CLIENT_URL",
   
   "SESSION_SECRET",
+  "TELEGRAM_BOT_ADMINS_ID",
   "MONGO_URL"
 ] as const;
 
