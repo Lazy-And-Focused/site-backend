@@ -8,17 +8,18 @@ const schema = new Schema<IMember>({
     unique: true
   },
 
+  tag: {
+    type: mongoose.SchemaTypes.String,
+    required: true,
+    unique: true
+  },
+
   role: {
     type: mongoose.SchemaTypes.String,
     required: true
   },
 
   description: {
-    type: mongoose.SchemaTypes.String,
-    required: true
-  },
-
-  tag: {
     type: mongoose.SchemaTypes.String,
     required: true
   },
