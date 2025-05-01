@@ -8,7 +8,7 @@ import { ILink } from "types/link.type";
 import Utility from "../utils/database.command-utility";
 
 const helpJson = JSON.stringify(<IProject>{
-  name: "some-project",
+  name: "@FOCKUSTY/some-project",
   author: {
     name: "FOCKUSTY",
     role: "CEO",
