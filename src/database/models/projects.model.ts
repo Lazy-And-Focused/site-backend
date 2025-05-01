@@ -3,6 +3,44 @@ import { IProject } from "types/project.type";
 
 import { MembersSchema } from "./members.model";
 
+const user = {
+  name: {
+    type: mongoose.SchemaTypes.String,
+    required: true,
+  },
+  
+  tag: {
+    type: mongoose.SchemaTypes.String,
+    required: true,
+  },
+  
+  role: {
+    type: mongoose.SchemaTypes.String,
+    required: true
+  },
+  
+  description: {
+    type: mongoose.SchemaTypes.String
+  },
+  
+  socials: [{
+    type: {
+      name: mongoose.SchemaTypes.String,
+      href: mongoose.SchemaTypes.String,
+    }
+  }],
+  
+  avatar: {
+    type: mongoose.SchemaTypes.String,
+    required: false
+  },
+  
+  meta: {
+    type: mongoose.SchemaTypes.String,
+    required: false
+  }
+}
+
 const schema = new Schema<IProject>({
   name: {
     type: mongoose.SchemaTypes.String,
@@ -11,13 +49,11 @@ const schema = new Schema<IProject>({
   },
 
   author: {
-    type: MembersSchema,
+    type: user,
     required: true
   },
 
-  contributors: [{
-    type: MembersSchema
-  }],
+  contributors: [user],
 
   description: {
     type: mongoose.SchemaTypes.String
