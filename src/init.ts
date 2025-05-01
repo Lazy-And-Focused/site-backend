@@ -23,8 +23,9 @@ export const initializeProjects = async () => {
   
       for (const project of projects) {
         try {
+          if (await Projects.findOne({ name: project.name })) throw new Error(`Проект ${project.name} уже сущесвует`);
+
           console.log("Инициализирую " + project.name);
-          console.log("Значения:\n" + JSON.stringify({ ...DEFAULT, ...project }, undefined, 4));
           const p = await Projects.create({ ...DEFAULT, ...project });
           console.log(p.name + " инициализирован");
         } catch (error) {
