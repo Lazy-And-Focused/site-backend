@@ -14,8 +14,8 @@ export const initializeProjects = async () => {
       
       console.log("Инициализирую проекты " + member.tag);
   
-      if (!success || !Array.isArray(repos)) return;
-      if (repos.length === 0) return;
+      if (!success || !Array.isArray(repos)) continue;
+      if (repos.length === 0) continue;
   
       console.log(repos);
       const projects = await service.resolveRepos(repos);
