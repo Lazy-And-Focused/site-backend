@@ -1,4 +1,4 @@
-import { IProject } from "types/project.type";
+import { DEFAULT, IProject } from "types/project.type";
 import request from "./request.service";
 import { IMember } from "types/member.type";
 
@@ -96,7 +96,7 @@ class Service {
   public constructor() {};
 
   public getRepos(username: string) {
-    return request(this.apiUrl + "/users/" + username);
+    return request<Repository[]>(this.apiUrl + "/users/" + username + "/repos");
   };
 
   public async resolveUser(user: User): Promise<IMember> {
@@ -137,9 +137,10 @@ class Service {
       const contributors = await this.resolveUsers(data);
 
       resolvedRepos.push({
+        ...DEFAULT,
         name: repo.full_name,
         author, contributors,
-        description: repo.description,
+        description: repo.description || "",
         cover: "",
         urls: [{
           href: repo.html_url

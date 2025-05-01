@@ -5,10 +5,12 @@ import App from "./app";
 
 import connect from "./database/connect";
 import { start } from "./telegram/index";
+import { initializeProjects } from "./init";
 
 const env = new Env();
 const app = new App(express())
 
+initializeProjects()
 start()
 connect(env.get("MONGO_URL"));
 app.listen();
