@@ -23,7 +23,8 @@ export const initializeProjects = async () => {
       for (const project of projects) {
         try {
           console.log("Инициализирую " + project.name);
-          const p = await Projects.create({ ...DEFAULT, ...project});
+          console.log("Значения:\n" + JSON.stringify({ ...DEFAULT, ...project }, undefined, 4));
+          const p = await Projects.create({ ...DEFAULT, ...project });
           console.log(p.name + " инициализирован");
         } catch (error) {
           console.error(`Инициализация ${project.name} выдала ошибку`)

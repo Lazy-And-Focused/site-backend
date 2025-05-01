@@ -20,8 +20,7 @@ const schema = new Schema<IProject>({
   }],
 
   description: {
-    type: mongoose.SchemaTypes.String,
-    required: true
+    type: mongoose.SchemaTypes.String
   },
 
   urls: [{
