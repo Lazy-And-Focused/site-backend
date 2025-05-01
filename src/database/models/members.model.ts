@@ -1,4 +1,4 @@
-import mongoose, { Schema, trusted } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { IMember } from "types/member.type";
 
 const schema = new Schema<IMember>({
