@@ -8,14 +8,15 @@ const service = new Service();
 export const initializeProjects = async () => {
   const members = await Members.find();
 
+  console.log("Инициализирую проекты");
   for (const member of members) {
     try {
       const { success, data: repos } = await service.getRepos(member.tag);
       
       console.log("Инициализирую проекты " + member.tag);
   
-      if (!success || !Array.isArray(repos)) continue;
-      if (repos.length === 0) continue;
+      if (!success || !Array.isArray(repos)) throw new Error(JSON.stringify(repos, undefined, 4));
+      if (repos.length === 0) throw new Error("Репозиториев нет");
   
       console.log(repos.map(r => r.name).join("\n"));
       const projects = await service.resolveRepos(repos);
