@@ -17,6 +17,7 @@ export const initializeProjects = async () => {
       if (!success || !Array.isArray(repos)) return;
       if (repos.length === 0) return;
   
+      console.log(repos);
       const projects = await service.resolveRepos(repos);
   
       for (const project of projects) {
@@ -24,10 +25,13 @@ export const initializeProjects = async () => {
           console.log("Инициализирую " + project.name);
           const p = await Projects.create({ ...DEFAULT, ...project});
           console.log(p.name + " инициализирован");
-        } catch {};
+        } catch {
+          continue;
+        };
       }
     } catch (error) {
-      continue;      
+      console.error(error);
+      continue;
     }
   };
 }
