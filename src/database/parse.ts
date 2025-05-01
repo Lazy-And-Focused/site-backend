@@ -4,18 +4,25 @@ import {
   KEYS as MEMBER_KEYS,
   IMember
 } from "types/member.type";
+import {
+  KEYS as PROJECT_KEYS,
+  IProject
+} from "types/project.type";
 
 const MODELS = [
-  "members"
+  "members",
+  "projects"
 ] as const;
 
-type IModels = (typeof MODELS)[number];
+export type IModels = (typeof MODELS)[number];
 const KEYS: Record<IModels, string[]|readonly string[]> = {
-  members: MEMBER_KEYS
+  members: MEMBER_KEYS,
+  projects: PROJECT_KEYS
 } as const;
 
 type IAllModels = {
-  members: IMember
+  members: IMember,
+  projects: IProject
 };
 
 type IDocument<T> = Document<unknown, {}, T, {}> & T & { _id: ObjectId; } & { __v: number; }
