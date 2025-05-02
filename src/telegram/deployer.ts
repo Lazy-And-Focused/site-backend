@@ -1,4 +1,4 @@
-import { env } from "../utils/env";
+import { env } from "env";
 
 import { readdirSync, existsSync } from "fs";
 import { join, resolve } from "path";

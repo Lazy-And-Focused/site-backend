@@ -1,12 +1,10 @@
-import Env from "env";
+import { env } from "env";
 
 import router from "routes";
 
 import express, { Express } from "express";
 import session from 'express-session';
 import cors from "cors";
-
-const env = new Env();
 
 class Session {
   public constructor(public readonly app: Express = express()) {};

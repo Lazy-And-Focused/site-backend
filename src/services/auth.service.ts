@@ -1,8 +1,6 @@
-import Env from "env";
+import { env } from "env";
 
 import { Request } from "express";
-
-const env = new Env();
 
 class Service {
   public constructor() {};

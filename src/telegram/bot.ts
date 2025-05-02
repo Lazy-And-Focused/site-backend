@@ -1,4 +1,4 @@
-import { env } from "../utils/env";
+import { env } from "env";
 
 import { Telegraf } from "telegraf";
 import { IDeployJson } from "./types/deploy-data.type";

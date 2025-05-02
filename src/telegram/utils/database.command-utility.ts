@@ -1,10 +1,9 @@
-import Env from "env";
+import { env } from "env";
 
 import { Model } from "mongoose";
 import { IInteraction } from "../types/interaction.types";
 import Parser, { IModels } from "database/parse";
 
-const env = new Env();
 const actions = ["add", "update", "delete", "addmulti"];
 
 class Utility<
