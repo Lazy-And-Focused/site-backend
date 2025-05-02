@@ -8,7 +8,9 @@ const REQUIRED = [
   "CLIENT_URL",
   
   "SESSION_SECRET",
-  "TELEGRAM_NEWS_CHANNEL_ID"
+  "TELEGRAM_BOT_ADMINS_ID",
+  "MONGO_URL",
+  "AUTH_TOKEN"
 ] as const;
 
 type Required = (typeof REQUIRED)[number];
