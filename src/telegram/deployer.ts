@@ -1,10 +1,10 @@
-import Env from "env";
+import { env } from "../utils/env";
 
 import { readdirSync, existsSync } from "fs";
 import { join, resolve } from "path";
 import { IDeployData } from "./types/deploy-data.type";
 
-const ignoreErrors = Boolean(new Env().get("IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS", true));
+const ignoreErrors = Boolean(env.get("IGNORE_TELEGRAM_DEPLOY_COMMANDS_ERRORS", true));
 
 const datas: IDeployData = {
   commands: new Map(),
