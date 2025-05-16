@@ -20,7 +20,10 @@ class Session {
 };
 
 class App {
-  public constructor(public readonly app: Express) {};
+  public constructor(
+    public readonly app: Express,
+    public readonly prefix: string = ""
+  ) {};
 
   public listen() {
     this.init();
@@ -39,7 +42,7 @@ class App {
 
     new Session(this.app);
 
-    this.app.use("/", router);
+    this.app.use("/" + this.prefix, router);
   };
 }
 

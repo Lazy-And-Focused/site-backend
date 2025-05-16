@@ -1,5 +1,6 @@
 # my
 members/
+!/src/routes/api/members/
 
 # compiled output
 /dist
@@ -23,3 +24,6 @@ logs
 .env.test.local
 .env.production.local
 .env.local
+
+# netlify
+.netlify/

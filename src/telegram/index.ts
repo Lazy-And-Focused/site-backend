@@ -5,13 +5,17 @@ import Deployer, { datas } from "./deployer";
 import { ICommand } from "./types/command.type";
 import { IListener } from "./types/listener.type";
 
+import { join, resolve } from "path";
+
+const DIR_NAME = resolve(join("./src/telegram"));
+
 const commands = new Deployer<ICommand>({
-  datasPath: [__dirname, "commands"],
+  datasPath: [DIR_NAME, "commands"],
   type: "commands"
 }).execute();
 
 const listeners = new Deployer<IListener>({
-  datasPath: [__dirname, "listeners"],
+  datasPath: [DIR_NAME, "listeners"],
   type: "listeners"
 }).execute();
 
