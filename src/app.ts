@@ -35,12 +35,12 @@ class App {
   }
 
   private init() {
-    // this.app.use(cors({  origin: [ env.get("CLIENT_URL") ], credentials: true }));
+    this.app.use(cors({  origin: [ env.get("CLIENT_URL") ], credentials: true }));
 
-    // this.app.use(express.json());
-    // this.app.use(express.urlencoded());
+    this.app.use(express.json());
+    this.app.use(express.urlencoded());
 
-    // new Session(this.app);
+    new Session(this.app);
 
     this.app.use("/" + this.prefix, router);
   };

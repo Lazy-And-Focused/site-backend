@@ -1,10 +1,10 @@
-import { start } from "telegram";
+// import { start } from "telegram";
 
 class Service {
   public constructor() {};
 
   public get() {
-    const client = start();
+    const client = {} as any;
 
     return {
       commands: client.data.commands,
