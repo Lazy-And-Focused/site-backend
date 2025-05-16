@@ -7,6 +7,7 @@ import { IListener } from "./types/listener.type";
 
 import { join, resolve } from "path";
 
+console.log(__dirname, __filename);
 const DIR_NAME = resolve(join("./", `${process.env.NODE_ENV === "dev" ? "src" : "dist/src"}/telegram`));
 
 const commands = new Deployer<ICommand>({
