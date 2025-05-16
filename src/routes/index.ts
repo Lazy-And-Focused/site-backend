@@ -5,8 +5,8 @@ import api from "./api";
 
 const router = Router();
 
-router.use("/status", status);
-router.use("/api", api);
+router.use("/status/", status);
+router.use("/api/", api);
 
 export { router };
 

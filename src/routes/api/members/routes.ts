@@ -7,7 +7,7 @@ const ROUTES = {
   DELETE: "/:name"
 } as const;
 
-const ROUTER = "/members" as const;
+const ROUTER = "/members/" as const;
 
 export {
   ROUTER, ROUTES
