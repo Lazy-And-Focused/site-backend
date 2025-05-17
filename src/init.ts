@@ -33,6 +33,8 @@ export const initializeProjects = async () => {
           } catch (error) {
             console.error(`Инициализация ${project.name} выдала ошибку`)
             console.error(error);
+            console.log();
+            console.error(project);
             continue;
           };
         }
