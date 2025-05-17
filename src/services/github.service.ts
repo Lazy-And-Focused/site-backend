@@ -100,10 +100,10 @@ class Service {
   };
 
   public async resolveUser(user: User): Promise<IMember> {
-    const member = await Members.findOne({ tag: user.login.toLowerCase() });
+    const   member = await Members.findOne({ tag: user.login.toLowerCase() });
   
     return <IMember>{
-      name: member?.name || "",
+      name: member?.name || user.login,
       description: member?.description || "",
       role: member?.role || "lafer",
       socials: member?.socials || [{
