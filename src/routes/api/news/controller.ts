@@ -12,7 +12,7 @@ class Controller {
   public constructor() {}
 
   public async getOne(req: Request, res: Response) {
-    const news = service.getOne(req.params.name);
+    const news = await service.getOne(req.params.name);
     
     res.send({data: news});
   }
@@ -26,7 +26,7 @@ class Controller {
     if (Number.isNaN(Number(query.length))) query.length = "-1";
     if (Number.isNaN(Number(query.offset))) query.offset = "0";
     
-    const news = service.getAll(query);
+    const news = await service.getAll(query);
     
     res.send({data: news});
   }

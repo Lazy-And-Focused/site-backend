@@ -7,7 +7,8 @@ import Controller from "./controller";
 const controller = new Controller();
 const router = Router();
 
-router.get(ROUTES.GET, controller.get);
+router.get(ROUTES.GET_ALL, controller.getAll);
+router.get(ROUTES.GET_ONE, controller.getOne);
 
 export { ROUTER }
 

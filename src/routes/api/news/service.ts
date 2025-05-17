@@ -9,13 +9,13 @@ class Service {
   public async getAll(query: { length: string, offset: string }) {
     const filter = query.length === "-1"
       ? { skip: Number(query.offset) }
-      : { length: Number(query.length), skip: Number(query.offset) };
+      : { limit: Number(query.length), skip: Number(query.offset) };
 
-    return (await News.find({}, {}, { ...filter })).map(n => parser.execute(n));
+    return (await News.find({}, {}, { sort: { date: "desc" }, ...filter })).map(n => parser.execute(n));
   }
 
-  public getOne(name: string) {
-    return News.findOne({name: name});
+  public async getOne(name: string) {
+    return parser.execute(await News.findOne({name: name}));
   }
 }
 
