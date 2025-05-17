@@ -11,32 +11,6 @@ const user = {
     type: mongoose.SchemaTypes.String,
     required: true,
   },
-  
-  role: {
-    type: mongoose.SchemaTypes.String,
-    required: true
-  },
-  
-  description: {
-    type: mongoose.SchemaTypes.String
-  },
-  
-  socials: [{
-    type: {
-      name: mongoose.SchemaTypes.String,
-      href: mongoose.SchemaTypes.String,
-    }
-  }],
-  
-  avatar: {
-    type: mongoose.SchemaTypes.String,
-    required: false
-  },
-  
-  meta: {
-    type: mongoose.SchemaTypes.String,
-    required: false
-  }
 }
 
 const schema = new Schema<IProject>({
