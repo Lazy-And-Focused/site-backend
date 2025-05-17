@@ -16,6 +16,7 @@ class Utility<
     sendHelp: (...data: any) => any,
     default: Readonly<{[key: string]: unknown}>,
     keys: Readonly<string[]>
+    actions?: string[]
   }) {};
 
   public async execute(interaction: IInteraction) {
@@ -35,10 +36,10 @@ class Utility<
       return this.props.sendHelp(interaction, "Ошибка 4. Действие не вписано.");
     };
 
-    let action: string = interaction.text.split(" ")[1].split("\n")[0];
+    const action: string = interaction.text.split(" ")[1].split("\n")[0];
     let name: string = "NONE";
     
-    if (!actions.includes(action)) {
+    if (!(this.props.actions || actions).includes(action)) {
       return this.props.sendHelp(interaction, "Ошибка 1. Действие не найдено.");
     };
     if (action !== "add") {

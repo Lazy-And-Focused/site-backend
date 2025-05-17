@@ -1,18 +1,21 @@
 import Client from "./bot";
 
+import { ICommand } from "./types/command.type";
+import { IInteraction } from "./types/interaction.types";
+
 import Help from "./commands/help.command";
 import Member, { sendHelp as mSendHelp } from "./commands/member.command";
 import Projects, { sendHelp as pSendHelp } from "./commands/projects.command";
+import News, { sendHelp as nSendHelp  } from "./commands/news.command";
 import Start from "./commands/start.command";
 
 import CommandListener from "./listeners/commands.listener"
-import { ICommand } from "./types/command.type";
-import { IInteraction } from "./types/interaction.types";
 
 const commands = Object.fromEntries(([
   [new Help(), false],
   [new Member(), mSendHelp],
   [new Projects(), pSendHelp],
+  [new News(), nSendHelp],
   [new Start(), false]
 ] as [ICommand, false|((interaction: IInteraction, prefix?: string) => Promise<any>)][]).map(c => c[1] ? [
   c[0].name, { command: c[0], help: c[1] }

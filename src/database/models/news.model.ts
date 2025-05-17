@@ -2,6 +2,12 @@ import mongoose, { Schema } from "mongoose";
 import { INews } from "types/news.type";
 
 const schema = new Schema<INews>({
+  name: {
+    type: mongoose.SchemaTypes.String,
+    required: true,
+    unique: true
+  },
+
   author: {
     type: mongoose.SchemaTypes.String,
     required: true
@@ -19,17 +25,14 @@ const schema = new Schema<INews>({
 
   banner: {
     type: mongoose.SchemaTypes.String,
-    required: true
   },
 
   icon: {
     type: mongoose.SchemaTypes.String,
-    required: true
   },
 
   image: {
     type: mongoose.SchemaTypes.String,
-    required: true
   }
 });
 

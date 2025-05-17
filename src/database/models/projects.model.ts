@@ -1,8 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IProject } from "types/project.type";
 
-import { MembersSchema } from "./members.model";
-
 const user = {
   name: {
     type: mongoose.SchemaTypes.String,

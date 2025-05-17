@@ -1,4 +1,5 @@
 export type INews = {
+  name: string;
   author: string;
 
   /** ISO date format */
@@ -18,8 +19,10 @@ export const DEFAULT = {
 } as const;
 
 export const REQUIRED = [
+  "name",
   "author",
   "text",
+  "date"
 ] as const;
 
 export const KEYS = [
