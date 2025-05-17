@@ -1,5 +1,6 @@
 const ROUTES = {
-  GET: "/"
+  GET_ALL: "/",
+  GET_ONE: "/:name"
 } as const;
 
 const QUERY = {
