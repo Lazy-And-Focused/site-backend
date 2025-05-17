@@ -1,28 +1,40 @@
 import Client from "./bot";
 
-import Deployer, { datas } from "./deployer";
+import Help from "./commands/help.command";
+import Member, { sendHelp as mSendHelp } from "./commands/member.command";
+import Projects, { sendHelp as pSendHelp } from "./commands/projects.command";
+import Start from "./commands/start.command";
 
+import CommandListener from "./listeners/commands.listener"
 import { ICommand } from "./types/command.type";
-import { IListener } from "./types/listener.type";
+import { IInteraction } from "./types/interaction.types";
 
-import { join, resolve } from "path";
+const commands = Object.fromEntries(([
+  [new Help(), false],
+  [new Member(), mSendHelp],
+  [new Projects(), pSendHelp],
+  [new Start(), false]
+] as [ICommand, false|((interaction: IInteraction, prefix?: string) => Promise<any>)][]).map(c => c[1] ? [
+  c[0].name, { command: c[0], help: c[1] }
+] : [
+  c[0].name, { command: c[0], help: false }
+])) as {
+  [key: string]: {
+    command: ICommand<any>,
+    help: false | (() => void)
+  }
+};
 
-const DIR_NAME = resolve(join("./", `${process.env.NODE_ENV === "dev" ? "src" : "dist/src"}/telegram`));
-
-const commands = new Deployer<ICommand>({
-  datasPath: [DIR_NAME, "commands"],
-  type: "commands"
-}).execute();
-
-const listeners = new Deployer<IListener>({
-  datasPath: [DIR_NAME, "listeners"],
-  type: "listeners"
-}).execute();
+const listeners = Object.fromEntries([
+  new CommandListener()
+].map(l => [l.name, l]));
 
 const client = new Client({
-  commands: Object.fromEntries(commands.datas.entries()),
-  listeners: Object.fromEntries(listeners.datas.entries()),
-  help: Object.fromEntries(datas.help.entries())
+  commands: Object.fromEntries(Object.keys(commands).map(c => [c, commands[c].command])),
+  listeners: listeners,
+  help: Object.fromEntries(Object.keys(commands).filter(c => !!commands[c].help).map(c => {
+    return [c, commands[c].help as any]
+  }))
 });
 
 let started = false;
