@@ -1,6 +1,9 @@
 import { IInteraction } from "../types/interaction.types";
 import { IListener, ListenerType } from "../types/listener.type";
 
+import Utility from "../utils/forward-news.utility";
+const forwardUtility = new Utility();
+
 const space = /\s+/;;
 
 class Listener implements IListener<[IInteraction]> {
@@ -11,6 +14,10 @@ class Listener implements IListener<[IInteraction]> {
     data: Parameters<IListener<[IInteraction]>["execute"]>[0]
   ) {
     return (interaction: IInteraction) => {
+      if ("forward_origin" in interaction.update.message) {
+        return forwardUtility.execute({ type: "forwarded", message: interaction.update.message });
+      };
+
       if (!(interaction.text && interaction.text.startsWith("/"))) return;
       if (!interaction.from) return;
     
